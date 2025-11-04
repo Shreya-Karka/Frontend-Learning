@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Tasks : Arrays and Objects</title>
+  </head>
+  <body>
+    <h1>Task 1</h1>
+    <p>Shopping Cart</p>
+
+    <script>
+      console.log("Task 1");
+      let products = ["Laptop", "Phone", "Tablet", "Headphones", "Mouse"];
+      products.push("Keyboard");
+      products.unshift("Monitor");
+      console.log(products.pop());
+      console.log(products.indexOf("Tablet"));
+      console.log(products.includes("Phone"));
+      console.log(products.length);
+      console.log(products);
+
+      console.log("Task 2");
+      let numbers = [5, 10, 15, 20, 25, 30, 35, 40];
+      let mapFunction = numbers.map((number) => number * 2);
+      console.log(mapFunction);
+
+      let filterFunction = numbers.filter((number) => number > 20);
+      console.log(filterFunction);
+
+      let findFunction = numbers.find((number) => number > 15);
+      console.log(findFunction);
+
+      numbers.forEach((number) => {
+        console.log(number);
+      });
+
+      console.log("Task 3");
+      let students = [
+        { name: "Alice", age: 20, grade: 85 },
+        { name: "Bob", age: 22, grade: 92 },
+        { name: "Charlie", age: 21, grade: 78 },
+        { name: "David", age: 23, grade: 95 },
+        { name: "Eve", age: 20, grade: 88 },
+        { name: "Shreya", age: 25, grade: 98 },
+      ];
+      students.forEach((student) => {
+        console.log(student.name);
+      });
+
+      let filterfunction2 = students.filter((student) => student.grade > 90);
+      console.log(filterfunction2);
+
+      let mapFunction2 = students.map((student) => student.name);
+      console.log(mapFunction2);
+
+      let average;
+      let sum = 0;
+      students.forEach((student) => {
+        sum = sum + student.grade;
+      });
+      average = sum / students.length;
+      console.log(average);
+
+      let highest = students[0].grade;
+      let high;
+
+      students.forEach((student) => {
+        if (student.grade > highest) {
+          highest = student.grade;
+          high = student;
+        }
+      });
+
+      console.log(high);
+
+      console.log("Task 4");
+      let product = {
+        name: "Laptop",
+        brand: "Dell",
+        price: 50000,
+        inStock: true,
+        specifications: {
+          ram: "16GB",
+          storage: "512GB SSD",
+          processor: "Intel i7",
+        },
+      };
+
+      console.log(Object.keys(product));
+      console.log(Object.values(product));
+
+      product.price = 45000;
+      product.warranty = "2 Years";
+      console.log(product.specifications.ram);
+      product.displayInfo = () => {
+        console.log(
+          `Info of Product are as follows: ${product.name}, ${product.brand}, ${product.price},${product.inStock}, ${product.specifications.ram}, ${product.specifications.storage}, ${product.specifications.processor}, ${product.warranty}`
+        );
+      };
+      product.displayInfo();
+
+      console.log("Task 5");
+
+      let todos = [
+        { id: 1, task: "Learn JavaScript", completed: false },
+        { id: 2, task: "Build a project", completed: false },
+        { id: 3, task: "Practice coding", completed: true },
+      ];
+
+      const addTodo = (task) => {
+        todos.push(task);
+      };
+
+      const completeTodo = (id) => {
+        let todo = todos.find((t) => t.id === id);
+        if (todo) {
+          todo.completed = true;
+        }
+      };
+      completeTodo(2);
+
+      const deleteTodo = (id) => {
+        todos = todos.filter((todo) => todo.id !== id);
+      };
+
+      deleteTodo(1);
+      console.log(todos);
+
+      const displayTodos = () => {
+        todos.forEach((todo) => {
+          console.log(todo);
+        });
+      };
+
+      displayTodos();
+      const displayCompleted = () => {
+        let completedTodo = todos.filter((todo) => todo.completed === true);
+        console.log(completedTodo);
+        // completedTodo.forEach((todo) => {
+        //   console.log(todo);
+        // });
+      };
+
+      displayCompleted();
+      const displaypending = () => {
+        let pendingTodo = todos.filter((todo) => todo.completed === false);
+        console.log(pendingTodo);
+      };
+      displaypending();
+    </script>
+  </body>
+</html>

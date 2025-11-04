@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Task 4</title>
+  </head>
+  <body>
+    <h1>Task 4:Traffic Light Simulator</h1>
+    <p>Determine traffic light based on color.</p>
+
+    <script>
+      let lightColor = "yellow";
+      let traffic;
+
+      switch (lightColor) {
+        case "red":
+          traffic = "STOP!";
+          console.log(traffic);
+          break;
+        case "green":
+          traffic = "GO!";
+          console.log(traffic);
+          break;
+        case "yellow":
+          traffic = "SLOW DOWN!";
+          console.log(traffic);
+          break;
+        default:
+          console.log("Invalid traffic light color");
+      }
+    </script>
+  </body>
+</html>

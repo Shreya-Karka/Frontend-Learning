@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Practice</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+        padding: 5px;
+      }
+      .hidden {
+        display: none;
+      }
+      .blue-text {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Original Title</h1>
+    <p class="text">Paragraph 1</p>
+    <p class="text">Paragraph 2</p>
+    <p class="text">Paragraph 3</p>
+
+    <div id="container"></div>
+
+    <ul id="list"></ul>
+
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <button id="btn">Click Me</button>
+    <p id="output"></p>
+
+    <script>
+      // TASK 1: Change the title text to "DOM Manipulation Master"
+      let title = document.querySelector("#title");
+      title.textContent = "DOM Manipulation Master";
+      // TASK 2: Change the first paragraph's color to red using style
+      let firstpara = document.querySelector(".text");
+      firstpara.style.color = "red";
+      // TASK 3: Add "highlight" class to the second paragraph
+      let para = document.querySelectorAll(".text");
+      para[1].classList.add("highlight");
+      // TASK 4: Hide the third paragraph by adding "hidden" class
+      para[2].classList.add("hidden");
+      // TASK 5: Create 3 list items with fruits and add to the ul
+      let fruits = ["Apple", "Banana", "Orange"];
+      let list = document.querySelector("#list");
+      fruits.forEach((f) => {
+        let l = document.createElement("li");
+        list.appendChild(l);
+        l.textContent = f;
+      });
+      // Loop through fruits, create li for each, append to ul
+
+      // TASK 6: Create a new div with text "I'm dynamically created!"
+      // and add it to the container div
+      let newDiv = document.createElement("div");
+      newDiv.textContent = "I'm dynamically created!";
+      let container = document.querySelector("#container");
+      container.appendChild(newDiv);
+      // TASK 7: When button is clicked:
+      // - Get value from input
+      // - Display "Hello, [name]!" in the output paragraph
+      // - Clear the input
+      document.getElementById("btn").onclick = function () {
+        // Your code here
+        let input = document.querySelector("#nameInput");
+        let value = input.value;
+        let output = document.querySelector("#output");
+        output.textContent = `Hello, ${value}!`;
+        input.value = "";
+      };
+
+      // TASK 8: Toggle the "blue-text" class on title when you click it
+      title.onclick = () => {
+        title.classList.toggle("blue-text");
+      };
+    </script>
+  </body>
+</html>

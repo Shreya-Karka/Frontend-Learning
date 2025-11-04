@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events Practice</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background: lightblue;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .highlight {
+        background: yellow;
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Events Practice</h1>
+
+    <!-- TASK 1: Hover Effect -->
+    <div id="box">Hover over me!</div>
+    <!-- On mouseover: change background to pink and text to "Mouse is here!"
+         On mouseout: change back to lightblue and text to "Hover over me!" -->
+
+    <!-- TASK 2: Real-time Key Display -->
+    <input type="text" id="keyInput" placeholder="Type something" />
+    <p>You typed: <span id="keyDisplay"></span></p>
+    <p>Character count: <span id="charCount">0</span></p>
+    <!-- Show what user types in real-time + character count -->
+
+    <!-- TASK 3: Form Validation -->
+    <form id="myForm">
+      <input
+        type="text"
+        id="username"
+        placeholder="Username (min 3 chars)"
+        required
+      />
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+    <!-- Prevent default submission
+         Validate: username must be at least 3 characters
+         Show success message with entered data -->
+
+    <!-- TASK 4: Double Click Counter -->
+    <button id="dblBtn">Double Click Me (Count: 0)</button>
+    <!-- Track double-click count and update button text -->
+
+    <!-- TASK 5: Click Position Tracker -->
+    <div
+      id="clickArea"
+      style="width: 400px; height: 200px; background: #f0f0f0; margin: 20px"
+    >
+      Click anywhere inside
+    </div>
+    <p id="position"></p>
+    <!-- Display X and Y coordinates where user clicked -->
+
+    <!-- TASK 6: Keyboard Shortcuts -->
+    <p>Press 'r' for red, 'g' for green, 'b' for blue, 'Escape' to reset</p>
+    <div
+      id="colorBox"
+      style="
+        width: 200px;
+        height: 200px;
+        background: white;
+        border: 2px solid black;
+      "
+    ></div>
+    <!-- Listen for keydown on document and change colorBox background -->
+
+    <script>
+      // TASK 1: Hover effect
+      let box = document.querySelector("#box");
+      box.addEventListener("mouseover", () => {
+        box.style.backgroundColor = "pink";
+        box.textContent = "Mouse is here!";
+      });
+
+      box.addEventListener("mouseout", function () {
+        box.style.backgroundColor = "lightblue";
+        box.textContent = "Hover over me!";
+      });
+
+      // TASK 2: Real-time typing
+      let input = document.querySelector("#keyInput");
+      input.addEventListener("keyup", () => {
+        let display = document.querySelector("#keyDisplay");
+        let charcount = document.querySelector("#charCount");
+        display.textContent = input.value;
+        charcount.textContent = input.value.length;
+      });
+      // TASK 3: Form validation
+      let form = document.querySelector("#myForm");
+      let result = document.querySelector("#result");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let username = document.querySelector("#username").value;
+        if (username.length < 3) {
+          result.textContent = "username must be at least 3 characters";
+        } else {
+          result.textContent = `Success! Hi, ${username}`;
+        }
+      });
+      // TASK 4: Double click counter
+      let button = document.querySelector("#dblBtn");
+      let count = 0;
+      button.addEventListener("dblclick", function () {
+        count++;
+        button.textContent = `Double Click Me (Count: ${count})`;
+      });
+      // TASK 5: Click position
+      let div = document.querySelector("#clickArea");
+      let position = document.querySelector("#position");
+      div.addEventListener("click", (e) => {
+        let X = e.clientX;
+        let Y = e.clientY;
+        position.textContent = `User Clicked at x:${X} and y:${Y}`;
+      });
+
+      // TASK 6: Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        let colorbox = document.querySelector("#colorBox");
+        if (e.key == "r" || e.key == "R") {
+          colorbox.style.backgroundColor = "red";
+        } else if (e.key == "g" || e.key == "G") {
+          colorbox.style.backgroundColor = "green";
+        } else if (e.key == "b" || e.key == "B") {
+          colorbox.style.backgroundColor = "blue";
+        } else if (e.key == "Escape") {
+          colorbox.style.backgroundColor = "white";
+        }
+      });
+    </script>
+  </body>
+</html>

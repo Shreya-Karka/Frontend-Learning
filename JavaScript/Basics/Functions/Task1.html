@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Functions</title>
+  </head>
+  <body>
+    <h1>Task 1:Simple Calculator</h1>
+    <p>Add, Sub, Mul, Div Functions</p>
+
+    <h1>Task 2:Temperature Convertor</h1>
+    <p>Celsius to Fahrenheit Converter functions and vice versa</p>
+
+    <h1>Task 3:Grade Calculator</h1>
+    <p>Grade calculator function</p>
+
+    <h1>Task 4:is even or not</h1>
+
+    <h1>Task 5:Arrow functions</h1>
+
+    <p>Convert these to arrow functions:</p>
+    <p>function square(num) {</p>
+    <p>return num * num; }</p>
+    <p>function isAdult(age) {</p>
+    <p>return age >= 18; }</p>
+    <p>function fullName(firstName, lastName)</p>
+    <p>{ return `${firstName} ${lastName}`; }</p>
+
+    <h1>Task 6:Age in Dog Years</h1>
+
+    <script>
+      console.log("Task 1");
+      const add = (a, b) => a + b;
+
+      const sub = function (a, b) {
+        return a - b;
+      };
+
+      function mul(a, b) {
+        return a * b;
+      }
+
+      const div = (a, b) => a / b;
+
+      console.log(add(5, 4));
+      console.log(sub(5, 4));
+      console.log(mul(5, 4));
+      console.log(div(5, 4));
+
+      console.log("Task 2");
+      const celsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
+      const fahrenheitToCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
+
+      let celsius = 15;
+      let fahrenheit = 71;
+
+      let temp1 = celsiusToFahrenheit(celsius);
+      let temp2 = fahrenheitToCelsius(fahrenheit);
+
+      console.log(
+        `Temperature converted from celsius ${celsius} to fahrenheit is ${temp1}.`
+      );
+      console.log(
+        `Temperature converted from fahrenheit ${fahrenheit} to celsius is ${temp2}.`
+      );
+
+      console.log("Task 3");
+
+      const calculatedGrade = function (marks) {
+        if (marks >= 90) {
+          return "Excellent";
+        } else if (marks >= 75) {
+          return "Good";
+        } else if (marks >= 50) {
+          return "Average";
+        } else {
+          return "Fail";
+        }
+      };
+
+      const checkPassFail = (marks) => {
+        if (marks >= 50) {
+          return "Passed";
+        } else {
+          return "Failed";
+        }
+      };
+
+      let marks1 = 75;
+      let marks2 = 49;
+
+      let res1 = calculatedGrade(marks1);
+      let res2 = checkPassFail(marks2);
+
+      console.log(`For marks ${marks1}, he is ${res1}.`);
+      console.log(`For marks ${marks2}, he ${res2}.`);
+
+      console.log("Task 4");
+
+      const isEven = (num) => {
+        if (num % 2 == 0) {
+          return true;
+        }
+        return false;
+      };
+
+      let num = 56;
+      let res = isEven(num);
+      console.log(`The given number ${num} is Even : ${res}.`);
+
+      console.log("Task 5");
+      const square = (num) => num * num;
+      const isAdult = (age) => age >= 18;
+      const fullName = (firstName, lastName) => `${firstName} ${lastName}`;
+
+      console.log(square(6));
+      console.log(isAdult(18));
+      console.log(fullName("shreya", "karka"));
+
+      console.log("Task 6");
+
+      const dogYears = (humanAge) => {
+        if (humanAge - 2 <= 0) {
+          return humanAge * 10.5;
+        } else {
+          return 2 * 10.5 + (humanAge - 2) * 4;
+        }
+      };
+
+      console.log(dogYears(3));
+      console.log(dogYears(1));
+    </script>
+  </body>
+</html>

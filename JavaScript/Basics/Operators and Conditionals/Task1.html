@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <h1>Task 1: Age Classifier</h1>
+    <p>Determine age category based on age</p>
+
+    <script>
+      let age = 65;
+      let ageType;
+
+      if (age < 13) {
+        ageType = "Child";
+      } else if (age >= 13 && age <= 19) {
+        ageType = "Teenager";
+      } else if (age >= 20 && age <= 59) {
+        ageType = "Adult";
+      } else {
+        ageType = "Senior";
+      }
+
+      console.log(ageType);
+    </script>
+  </body>
+</html>

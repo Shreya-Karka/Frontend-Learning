@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Async/Await Practice</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .exercise {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      .output {
+        background: white;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 PART 2: Async/Await Practice</h1>
+
+    <!-- Exercise 1 -->
+    <div class="exercise">
+      <h2>Exercise 1: Convert Promise to Async/Await</h2>
+      <p><strong>Goal:</strong> Rewrite a promise using async/await</p>
+      <p>Wait 2 seconds, then display "Async completed!"</p>
+      <button id="async1btn">Test Async</button>
+      <div class="output" id="async1output"></div>
+    </div>
+
+    <!-- Exercise 2 -->
+    <div class="exercise">
+      <h2>Exercise 2: Sequential Async Operations</h2>
+      <p><strong>Goal:</strong> Run 3 async operations one after another</p>
+      <p>Each operation takes 1 second</p>
+      <button id="async2btn">Start Sequence</button>
+      <div class="output" id="async2output"></div>
+    </div>
+
+    <!-- Exercise 3 -->
+    <div class="exercise">
+      <h2>Exercise 3: Error Handling with Try/Catch</h2>
+      <p><strong>Goal:</strong> Handle both success and error cases</p>
+      <p>Randomly succeed or fail, handle both with try/catch</p>
+      <button id="async3btn">Test Error Handling</button>
+      <div class="output" id="async3output"></div>
+    </div>
+
+    <!-- Exercise 4 -->
+    <div class="exercise">
+      <h2>Exercise 4: Parallel Async Operations</h2>
+      <p><strong>Goal:</strong> Run multiple async operations simultaneously</p>
+      <p>Use Promise.all() with async/await</p>
+      <button id="async4btn">Run Parallel</button>
+      <div class="output" id="async4output"></div>
+    </div>
+
+    <!-- Exercise 5 -->
+    <div class="exercise">
+      <h2>Exercise 5: Async Function with Return Value</h2>
+      <p>
+        <strong>Goal:</strong> Create async function that calculates and returns
+        result
+      </p>
+      <input type="number" id="num1" placeholder="Number 1" />
+      <input type="number" id="num2" placeholder="Number 2" />
+      <button id="async5btn">Calculate Sum (after 2 sec)</button>
+      <div class="output" id="async5output"></div>
+    </div>
+
+    <script>
+      // Helper function to simulate delay
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      // EXERCISE 1: Convert to Async/Await
+      // TODO: Make this function async and use await
+      async function exercise1() {
+        let output = document.getElementById("async1output");
+        output.textContent = "Starting...";
+        await delay(2000);
+
+        output.textContent = "Async completed!";
+        // TODO:
+        // 1. Wait 2 seconds using: await delay(2000);
+        // 2. Then display "Async completed!"
+      }
+
+      document.getElementById("async1btn").onclick = exercise1;
+
+      // EXERCISE 2: Sequential Operations
+      async function exercise2() {
+        let output = document.getElementById("async2output");
+        output.textContent = "Step 1..";
+        await delay(1000);
+        output.textContent = "Step 2..";
+        await delay(1000);
+        output.textContent = "Step 3..";
+        await delay(1000);
+        output.textContent = "All steps complete!";
+
+        // TODO:
+        // 1. Display "Step 1..."
+        // 2. Wait 1 second
+        // 3. Display "Step 2..."
+        // 4. Wait 1 second
+        // 5. Display "Step 3..."
+        // 6. Wait 1 second
+        // 7. Display "All steps complete!"
+      }
+
+      document.getElementById("async2btn").onclick = exercise2;
+
+      // EXERCISE 3: Error Handling
+      function riskyOperation() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (Math.random() > 0.5) {
+              resolve("Success!");
+            } else {
+              reject("Failed!");
+            }
+          }, 1000);
+        });
+      }
+
+      async function exercise3() {
+        let output = document.getElementById("async3output");
+        output.textContent = "Testing...";
+
+        // TODO:
+        // 1. Use try/catch
+        // 2. Try to await riskyOperation()
+        // 3. If success, display the result in green
+        // 4. If error, display the error in red
+
+        try {
+          // Your code here
+          let response = await riskyOperation();
+          output.style.color = "green";
+          output.textContent = response;
+        } catch (error) {
+          // Your code here
+          output.style.color = "red";
+          output.textContent = error;
+        }
+      }
+
+      document.getElementById("async3btn").onclick = exercise3;
+
+      // EXERCISE 4: Parallel Operations
+      async function exercise4() {
+        let output = document.getElementById("async4output");
+        output.textContent = "Running tasks in parallel...";
+
+        // TODO:
+        // 1. Create 3 promises (use delay function)
+        // 2. Wait for all using: await Promise.all([...])
+        // 3. Display results when all complete
+
+        let task1 = delay(1000).then(() => "Task 1 done");
+        let task2 = delay(2000).then(() => "Task 2 done");
+        let task3 = delay(3000).then(() => "Task 3 done");
+
+        // Your code here
+        let response = await Promise.all([task1, task2, task3]);
+        output.textContent = response;
+      }
+
+      document.getElementById("async4btn").onclick = exercise4;
+
+      // EXERCISE 5: Async with Return Value
+      async function calculateSum(a, b) {
+        // TODO:
+        // 1. Wait 2 seconds
+        // 2. Calculate sum
+        // 3. Return the result
+        await delay(2000);
+        let sum = a + b;
+        return sum;
+      }
+
+      async function exercise5() {
+        let output = document.getElementById("async5output");
+        let num1 = parseInt(document.getElementById("num1").value);
+        let num2 = parseInt(document.getElementById("num2").value);
+
+        output.textContent = "Calculating...";
+
+        // TODO:
+        // 1. Call calculateSum with await
+        // 2. Display result
+        let sum = await calculateSum(num1, num2);
+        output.textContent = sum;
+      }
+
+      document.getElementById("async5btn").onclick = exercise5;
+    </script>
+  </body>
+</html>

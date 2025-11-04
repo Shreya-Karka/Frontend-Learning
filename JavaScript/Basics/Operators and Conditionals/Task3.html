@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <h1>Task 3: Grade Calculator</h1>
+    <p>Determine grade based on marks</p>
+
+    <script>
+      let marks = 43;
+      let grade;
+
+      if (marks >= 90) {
+        grade = "Excellent";
+      } else if (marks >= 75) {
+        grade = "Good";
+      } else if (marks >= 50) {
+        grade = "Average";
+      } else {
+        grade = "Fail";
+      }
+
+      if (marks >= 50) {
+        console.log("Student Passed!");
+      } else {
+        console.log("Student Failed!");
+      }
+
+      console.log(`Grade : ${grade}`);
+    </script>
+  </body>
+</html>

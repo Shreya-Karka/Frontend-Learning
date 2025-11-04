@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promises Practice</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .exercise {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      .output {
+        background: white;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 PART 1: Promises Practice</h1>
+
+    <!-- Exercise 1 -->
+    <div class="exercise">
+      <h2>Exercise 1: Create a Simple Promise</h2>
+      <p>
+        <strong>Goal:</strong> Create a promise that resolves after 3 seconds
+        with message "Promise completed!"
+      </p>
+      <button id="ex1btn">Start Promise</button>
+      <div class="output" id="ex1output"></div>
+    </div>
+
+    <!-- Exercise 2 -->
+    <div class="exercise">
+      <h2>Exercise 2: Promise with Success/Failure</h2>
+      <p>
+        <strong>Goal:</strong> Create a promise that randomly resolves (70%) or
+        rejects (30%)
+      </p>
+      <p>If success: "Operation successful!"</p>
+      <p>If failure: "Operation failed!"</p>
+      <button id="ex2btn">Test Random Promise</button>
+      <div class="output" id="ex2output"></div>
+    </div>
+
+    <!-- Exercise 3 -->
+    <div class="exercise">
+      <h2>Exercise 3: Chaining Promises</h2>
+      <p><strong>Goal:</strong> Create 3 promises that run one after another</p>
+      <p>Step 1 (1 sec): "Preparing..."</p>
+      <p>Step 2 (1 sec): "Processing..."</p>
+      <p>Step 3 (1 sec): "Completing..."</p>
+      <button id="ex3btn">Start Chain</button>
+      <div class="output" id="ex3output"></div>
+    </div>
+
+    <!-- Exercise 4 -->
+    <div class="exercise">
+      <h2>Exercise 4: Promise with User Input</h2>
+      <p>
+        <strong>Goal:</strong> Create a promise that checks if a number is even
+        or odd
+      </p>
+      <p>If even: resolve with "Even number!"</p>
+      <p>If odd: reject with "Odd number!"</p>
+      <input type="number" id="numInput" placeholder="Enter a number" />
+      <button id="ex4btn">Check Number</button>
+      <div class="output" id="ex4output"></div>
+    </div>
+
+    <!-- Exercise 5 -->
+    <div class="exercise">
+      <h2>Exercise 5: Multiple Promises with Promise.all()</h2>
+      <p>
+        <strong>Goal:</strong> Run 3 promises simultaneously and show when ALL
+        complete
+      </p>
+      <p>Promise 1: 1 second - "Task 1 done"</p>
+      <p>Promise 2: 2 seconds - "Task 2 done"</p>
+      <p>Promise 3: 3 seconds - "Task 3 done"</p>
+      <button id="ex5btn">Run All Promises</button>
+      <div class="output" id="ex5output"></div>
+    </div>
+
+    <script>
+      // EXERCISE 1: Simple Promise
+      // Complete this function
+      function exercise1() {
+        let output = document.getElementById("ex1output");
+        output.textContent = "Starting...";
+
+        // TODO: Create a promise that:
+        // 1. Waits 3 seconds using setTimeout
+        // 2. Resolves with "Promise completed!"
+        // 3. Display the message in output
+
+        let myPromise = new Promise(function (resolve, reject) {
+          // Your code here
+          setTimeout(function () {
+            resolve("Promise completed!");
+          }, 3000);
+        });
+
+        myPromise.then(function (message) {
+          // Your code here
+          console.log(message);
+          output.textContent = message;
+        });
+      }
+
+      document.getElementById("ex1btn").onclick = exercise1;
+
+      // EXERCISE 2: Random Success/Failure
+      function exercise2() {
+        let output = document.getElementById("ex2output");
+        output.textContent = "Testing...";
+
+        // TODO: Create a promise that:
+        // 1. Generates random number between 0 and 1
+        // 2. If > 0.3, resolve with "Operation successful!"
+        // 3. If <= 0.3, reject with "Operation failed!"
+        // 4. Use .then() for success and .catch() for failure
+
+        let randomPromise = new Promise(function (resolve, reject) {
+          // Your code here
+          setTimeout(() => {
+            rndmnumber = Math.random();
+            if (rndmnumber > 0.3) {
+              resolve("Operation successful!");
+            } else {
+              reject("Operation failed!");
+            }
+          }, 1000);
+        });
+
+        randomPromise
+          .then(function (message) {
+            // Your code here
+            console.log(message);
+            output.textContent = message;
+          })
+          .catch(function (error) {
+            // Your code here
+            console.log(error);
+            output.textContent = error;
+          });
+      }
+
+      document.getElementById("ex2btn").onclick = exercise2;
+
+      // EXERCISE 3: Chaining Promises
+      function exercise3() {
+        let output = document.getElementById("ex3output");
+        output.textContent = "";
+
+        // TODO: Create 3 functions that return promises
+        // Each waits 1 second and returns a message
+
+        function step1() {
+          return new Promise(function (resolve) {
+            // Your code here
+            setTimeout(() => {
+              resolve("Preparing...");
+            }, 1000);
+          });
+        }
+
+        function step2() {
+          return new Promise(function (resolve) {
+            // Your code here
+            setTimeout(() => {
+              resolve("Processing...");
+            }, 1000);
+          });
+        }
+
+        function step3() {
+          return new Promise(function (resolve) {
+            // Your code here
+            setTimeout(() => {
+              resolve("Completing...");
+            }, 1000);
+          });
+        }
+
+        // TODO: Chain the promises
+        // Display each message as it completes
+        step1()
+          .then(function (message1) {
+            // Your code here
+            output.textContent = message1;
+            return step2();
+          })
+          .then(function (message2) {
+            // Your code here
+            output.textContent = message2;
+            return step3();
+          })
+          .then(function (message3) {
+            // Your code here
+            output.textContent = message3;
+          });
+      }
+
+      document.getElementById("ex3btn").onclick = exercise3;
+
+      // EXERCISE 4: Promise with User Input
+      function exercise4() {
+        let output = document.getElementById("ex4output");
+        let num = document.getElementById("numInput").value;
+
+        // TODO: Create a promise that checks if number is even/odd
+        // Resolve if even, reject if odd
+
+        let checkNumber = new Promise(function (resolve, reject) {
+          // Your code here
+          setTimeout(() => {
+            if (num % 2 === 0) {
+              resolve("Even Number");
+            } else {
+              reject("Odd Number");
+            }
+          }, 1000);
+        });
+
+        checkNumber
+          .then(function (message) {
+            // Your code here
+            output.textContent = message;
+          })
+          .catch(function (error) {
+            // Your code here
+            output.textContent = error;
+          });
+      }
+
+      document.getElementById("ex4btn").onclick = exercise4;
+
+      // EXERCISE 5: Promise.all()
+      function exercise5() {
+        let output = document.getElementById("ex5output");
+        output.textContent = "Running all tasks...";
+
+        // TODO: Create 3 promises with different delays
+        let task1 = new Promise(function (resolve) {
+          setTimeout(function () {
+            resolve("Task 1 done (1 sec)");
+          }, 1000);
+        });
+
+        let task2 = new Promise(function (resolve) {
+          // Your code here (2 seconds)
+          setTimeout(function () {
+            resolve("Task 2 done (2 sec)");
+          }, 2000);
+        });
+
+        let task3 = new Promise(function (resolve) {
+          // Your code here (3 seconds)
+          setTimeout(function () {
+            resolve("Task 3 done (3 sec)");
+          }, 3000);
+        });
+
+        // TODO: Use Promise.all() to wait for all promises
+        // Display all results when ALL are complete
+        Promise.all([task1, task2, task3]).then(function (results) {
+          // Your code here
+          // results is an array: [result1, result2, result3]
+          output.textContent = results;
+        });
+      }
+
+      document.getElementById("ex5btn").onclick = exercise5;
+    </script>
+  </body>
+</html>

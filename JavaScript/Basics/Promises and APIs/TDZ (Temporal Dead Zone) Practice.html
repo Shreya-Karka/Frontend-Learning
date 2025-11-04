@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TDZ Practice</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .question {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+      }
+      .code-block {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        margin: 10px 0;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      .answer {
+        background: white;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        display: none;
+      }
+      .correct {
+        color: green;
+        font-weight: bold;
+      }
+      .incorrect {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 PART 3: TDZ (Temporal Dead Zone) Quiz</h1>
+    <p>
+      <strong>Instructions:</strong> Predict what each code snippet will output,
+      then click "Show Answer"
+    </p>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <h2>Question 1: Basic TDZ</h2>
+      <div class="code-block">console.log(name); let name = "Shreya";</div>
+      <p><strong>What will this output?</strong></p>
+      <button onclick="showAnswer(1)">Show Answer</button>
+      <div id="answer1" class="answer"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <h2>Question 2: var vs let</h2>
+      <div class="code-block">console.log(age); var age = 25;</div>
+      <p><strong>What will this output?</strong></p>
+      <button onclick="showAnswer(2)">Show Answer</button>
+      <div id="answer2" class="answer"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <h2>Question 3: Function Scope TDZ</h2>
+      <div class="code-block">
+        function test() { console.log(x); let x = 10; } test();
+      </div>
+      <p><strong>What will this output?</strong></p>
+      <button onclick="showAnswer(3)">Show Answer</button>
+      <div id="answer3" class="answer"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <h2>Question 4: Block Scope</h2>
+      <div class="code-block">{ console.log(name); let name = "Shreya"; }</div>
+      <p><strong>What will this output?</strong></p>
+      <button onclick="showAnswer(4)">Show Answer</button>
+      <div id="answer4" class="answer"></div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <h2>Question 5: const TDZ</h2>
+      <div class="code-block">console.log(PI); const PI = 3.14;</div>
+      <p><strong>What will this output?</strong></p>
+      <button onclick="showAnswer(5)">Show Answer</button>
+      <div id="answer5" class="answer"></div>
+    </div>
+
+    <!-- Practice Exercise -->
+    <div class="question">
+      <h2>🛠️ Practice Exercise: Fix the TDZ Errors</h2>
+      <p>Fix all the TDZ errors in this code:</p>
+      <div class="code-block">
+        function calculateTotal() { console.log(price); // Error 1
+        console.log(quantity); // Error 2 let price = 100; let quantity = 5;
+        console.log(total); // Error 3 let total = price * quantity; return
+        total; }
+      </div>
+      <button onclick="showAnswer(6)">Show Fixed Code</button>
+      <div id="answer6" class="answer"></div>
+    </div>
+
+    <script>
+      function showAnswer(num) {
+        let answerDiv = document.getElementById("answer" + num);
+
+        const answers = {
+          1: `<p class="incorrect">❌ ReferenceError: Cannot access 'name' before initialization</p>
+                    <p><strong>Why?</strong> 'name' is in the Temporal Dead Zone. It exists but cannot be accessed before the let declaration.</p>`,
+
+          2: `<p class="correct">✅ undefined</p>
+                    <p><strong>Why?</strong> var is hoisted and initialized with undefined. No TDZ for var!</p>`,
+
+          3: `<p class="incorrect">❌ ReferenceError: Cannot access 'x' before initialization</p>
+                    <p><strong>Why?</strong> Inside the function, 'x' is in TDZ until the let declaration.</p>`,
+
+          4: `<p class="incorrect">❌ ReferenceError: Cannot access 'name' before initialization</p>
+                    <p><strong>Why?</strong> Even in block scope, 'name' is in TDZ before declaration.</p>`,
+
+          5: `<p class="incorrect">❌ ReferenceError: Cannot access 'PI' before initialization</p>
+                    <p><strong>Why?</strong> const also has TDZ, just like let!</p>`,
+
+          6: `<p class="correct">Fixed Code:</p>
+                    <div class="code-block">
+function calculateTotal() {
+    // Declare ALL variables at the top
+    let price = 100;
+    let quantity = 5;
+    let total = price * quantity;
+    
+    console.log(price);    // ✅ 100
+    console.log(quantity); // ✅ 5
+    console.log(total);    // ✅ 500
+    
+    return total;
+}
+                    </div>
+                    <p><strong>Rule:</strong> Always declare variables BEFORE using them!</p>`,
+        };
+
+        answerDiv.innerHTML = answers[num];
+        answerDiv.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

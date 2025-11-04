@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch & JSON Practice</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .exercise {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      .output {
+        background: white;
+        padding: 15px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        min-height: 50px;
+      }
+      img {
+        max-width: 300px;
+        border-radius: 10px;
+      }
+      .user-card {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+      .json-example {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 PART 4: Fetch API & JSON Practice</h1>
+
+    <!-- Exercise 1: Understanding JSON -->
+    <div class="exercise">
+      <h2>Exercise 1: JSON Basics</h2>
+      <p><strong>Goal:</strong> Convert between JavaScript objects and JSON</p>
+
+      <h3>Part A: Object to JSON (stringify)</h3>
+      <button id="json1a">Convert Object to JSON</button>
+      <div class="output" id="json1a-output"></div>
+
+      <h3>Part B: JSON to Object (parse)</h3>
+      <button id="json1b">Convert JSON to Object</button>
+      <div class="output" id="json1b-output"></div>
+    </div>
+
+    <!-- Exercise 2: Fetch Random User -->
+    <div class="exercise">
+      <h2>Exercise 2: Fetch Random User</h2>
+      <p><strong>API:</strong> https://randomuser.me/api/</p>
+      <p>
+        <strong>Goal:</strong> Fetch user and display name, email, phone, and
+        picture
+      </p>
+      <button id="fetchUser">Get Random User</button>
+      <div class="output" id="user-output"></div>
+    </div>
+
+    <!-- Exercise 3: Fetch Multiple Users -->
+    <div class="exercise">
+      <h2>Exercise 3: Fetch Multiple Users</h2>
+      <p><strong>API:</strong> https://randomuser.me/api/?results=5</p>
+      <p><strong>Goal:</strong> Fetch 5 users and display them in a list</p>
+      <button id="fetchUsers">Get 5 Users</button>
+      <div class="output" id="users-output"></div>
+    </div>
+
+    <!-- Exercise 4: Fetch Dog Breeds -->
+    <div class="exercise">
+      <h2>Exercise 4: Fetch All Dog Breeds</h2>
+      <p><strong>API:</strong> https://dog.ceo/api/breeds/list/all</p>
+      <p><strong>Goal:</strong> Fetch and display list of all dog breeds</p>
+      <button id="fetchBreeds">Get All Breeds</button>
+      <div class="output" id="breeds-output"></div>
+    </div>
+
+    <!-- Exercise 5: Fetch Specific Dog Breed Images -->
+    <div class="exercise">
+      <h2>Exercise 5: Fetch Dog Breed Images</h2>
+      <p>
+        <strong>API:</strong> https://dog.ceo/api/breed/hound/images/random/3
+      </p>
+      <p><strong>Goal:</strong> Fetch 3 random images of a specific breed</p>
+      <input
+        type="text"
+        id="breedInput"
+        placeholder="Enter breed (e.g., hound, husky)"
+      />
+      <button id="fetchBreedImages">Get 3 Images</button>
+      <div class="output" id="breed-images-output"></div>
+    </div>
+
+    <!-- Exercise 6: Cat Facts -->
+    <div class="exercise">
+      <h2>Exercise 6: Fetch Random Cat Fact</h2>
+      <p><strong>API:</strong> https://catfact.ninja/fact</p>
+      <p><strong>Goal:</strong> Fetch and display a random cat fact</p>
+      <button id="fetchCatFact">Get Cat Fact</button>
+      <div class="output" id="cat-fact-output"></div>
+    </div>
+
+    <!-- Exercise 7: Country Information -->
+    <div class="exercise">
+      <h2>Exercise 7: Search Country Information</h2>
+      <p><strong>API:</strong> https://restcountries.com/v3.1/name/{country}</p>
+      <p>
+        <strong>Goal:</strong> Search country and display name, capital,
+        population, flag
+      </p>
+      <input type="text" id="countryInput" placeholder="Enter country name" />
+      <button id="fetchCountry">Search Country</button>
+      <div class="output" id="country-output"></div>
+    </div>
+
+    <script>
+      // EXERCISE 1A: Object to JSON
+      document.getElementById("json1a").addEventListener("click", function () {
+        let output = document.getElementById("json1a-output");
+
+        // TODO:
+        // 1. Create a JavaScript object with your info (name, age, city, hobbies array)
+        // 2. Convert it to JSON using JSON.stringify()
+        // 3. Display both the object and JSON string
+
+        let person = {
+          // Your code here
+          name: "shreya",
+          age: 25,
+          city: "Hyderabad",
+          hobbies: ["drawing", "painting"],
+        };
+
+        let jsonString = JSON.stringify(person); // Your code here
+        output.innerHTML = `
+                <h4>JavaScript Object:</h4>
+                <pre>${JSON.stringify(person, null, 2)}</pre>
+                <h4>JSON String:</h4>
+                <pre>${jsonString}</pre>
+            `;
+      });
+
+      // EXERCISE 1B: JSON to Object
+      document.getElementById("json1b").addEventListener("click", function () {
+        let output = document.getElementById("json1b-output");
+
+        // TODO:
+        // 1. Parse this JSON string
+        // 2. Access and display individual properties
+
+        let jsonString =
+          '{"name":"Shreya","age":25,"city":"Mumbai","skills":["HTML","CSS","JavaScript"]}';
+
+        let person = JSON.parse(jsonString); // Your code here (use JSON.parse)
+        output.innerHTML = `
+                <p><strong>Name:</strong> ${person.name}</p>
+                <p><strong>Age:</strong> ${person.age}</p>
+                <p><strong>City:</strong> ${person.city}</p>
+                <p><strong>Skills:</strong> ${person.skills.join(", ")}</p>
+            `;
+      });
+
+      // EXERCISE 2: Fetch Random User
+      document
+        .getElementById("fetchUser")
+        .addEventListener("click", async function () {
+          let output = document.getElementById("user-output");
+          output.innerHTML = "Loading...";
+
+          try {
+            let response = await fetch("https://randomuser.me/api/");
+            let data = await response.json(); // ✅ Lowercase + ()
+            let user = data.results[0];
+
+            output.innerHTML = `
+            <img src="${user.picture.large}" alt="User">
+            <p><strong>Name:</strong> ${user.name.first} ${user.name.last}</p>
+            <p><strong>Email:</strong> ${user.email}</p>
+            <p><strong>Phone:</strong> ${user.phone}</p>
+        `;
+          } catch (error) {
+            output.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+          }
+        });
+
+      // EXERCISE 3: Fetch Multiple Users
+      document
+        .getElementById("fetchUsers")
+        .addEventListener("click", async function () {
+          let output = document.getElementById("users-output");
+          output.innerHTML = "Loading...";
+
+          try {
+            let response = await fetch("https://randomuser.me/api/?results=5");
+            let data = await response.json(); // ✅ Fixed
+
+            output.innerHTML = ""; // Clear loading text
+
+            data.results.forEach((user) => {
+              // ✅ data.results (not just data)
+              output.innerHTML += `
+                <p><strong>${user.name.first} ${user.name.last}</strong> - ${user.email}</p>
+            `;
+            });
+          } catch (error) {
+            output.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+          }
+        });
+
+      // EXERCISE 4: Fetch Dog Breeds
+      document
+        .getElementById("fetchBreeds")
+        .addEventListener("click", async function () {
+          let output = document.getElementById("breeds-output");
+          output.innerHTML = "Loading...";
+
+          try {
+            let response = await fetch("https://dog.ceo/api/breeds/list/all"); // ✅ Fixed typo
+            let data = await response.json(); // ✅ Fixed
+
+            let breeds = Object.keys(data.message); // ✅ Fixed typo
+            let first20 = breeds.slice(0, 20);
+
+            output.innerHTML =
+              "<ol>" +
+              first20.map((breed) => `<li>${breed}</li>`).join("") +
+              "</ol>";
+          } catch (error) {
+            output.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+          }
+        });
+
+      // EXERCISE 5: Fetch Dog Breed Images
+      document
+        .getElementById("fetchBreedImages")
+        .addEventListener("click", async function () {
+          let output = document.getElementById("breed-images-output");
+          let breed = document.getElementById("breedInput").value.toLowerCase();
+
+          if (!breed) {
+            output.innerHTML = "<p>Please enter a breed name!</p>";
+            return;
+          }
+
+          output.innerHTML = "Loading...";
+
+          try {
+            // ✅ Backticks, not single quotes!
+            let response = await fetch(
+              `https://dog.ceo/api/breed/${breed}/images/random/3`
+            );
+            let data = await response.json(); // ✅ Added await
+
+            output.innerHTML = "";
+            data.message.forEach((imgUrl) => {
+              output.innerHTML += `<img src="${imgUrl}" alt="Dog">`;
+            });
+          } catch (error) {
+            output.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Make sure you entered a valid breed!</p>`;
+          }
+        });
+
+      // EXERCISE 6: Fetch Cat Fact
+      document
+        .getElementById("fetchCatFact")
+        .addEventListener("click", async function () {
+          let output = document.getElementById("cat-fact-output");
+          output.innerHTML = "Loading...";
+
+          try {
+            let response = await fetch("https://catfact.ninja/fact");
+            let data = await response.json(); // ✅ Added await
+
+            output.innerHTML = `<p>${data.fact}</p>`;
+          } catch (error) {
+            output.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+          }
+        });
+      // EXERCISE 7: Search Country
+      document
+        .getElementById("fetchCountry")
+        .addEventListener("click", async function () {
+          let output = document.getElementById("country-output");
+          let country = document.getElementById("countryInput").value;
+
+          if (!country) {
+            output.innerHTML = "<p>Please enter a country name!</p>";
+            return;
+          }
+
+          output.innerHTML = "Loading...";
+
+          try {
+            // ✅ Backticks!
+            let response = await fetch(
+              `https://restcountries.com/v3.1/name/${country}`
+            );
+            let data = await response.json(); // ✅ Added await
+
+            let countryData = data[0]; // ✅ data is already an array
+
+            output.innerHTML = `
+            <img src="${countryData.flags.png}" alt="Flag" style="width:200px;">
+            <h3>${countryData.name.common}</h3>
+            <p><strong>Capital:</strong> ${countryData.capital[0]}</p>
+            <p><strong>Population:</strong> ${countryData.population.toLocaleString()}</p>
+            <p><strong>Flag Emoji:</strong> ${countryData.flag}</p>
+        `;
+          } catch (error) {
+            output.innerHTML = `<p style="color: red;">Country not found!</p>`;
+          }
+        });
+    </script>
+  </body>
+</html>
+n

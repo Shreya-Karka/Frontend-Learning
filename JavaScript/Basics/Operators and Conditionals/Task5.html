@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <h1>Task 5: Discount Calculator</h1>
+    <p>Determine discount category based on purchase amount</p>
+
+    <script>
+      let purchaseAmount = 400;
+
+      let discount = purchaseAmount >= 1000 ? 20 : 10;
+      if (purchaseAmount < 500) {
+        discount = 0;
+      }
+      let discountAmount = (discount / 100) * purchaseAmount;
+      let finalPrice = purchaseAmount - discountAmount;
+
+      console.log(
+        `As Purchase Amount is ${purchaseAmount} we have discount of ${discount} which implies discounted price of ${discountAmount} and gives our final price ${finalPrice}.`
+      );
+    </script>
+  </body>
+</html>
