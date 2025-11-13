@@ -1,0 +1,77 @@
+/* User List Filter Container */
+.user-list-filter {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.filter-buttons button:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.filter-buttons button:active {
+  transform: translateY(0);
+}
+
+/* User Count */
+.user-list-filter > p {
+  text-align: center;
+  color: #666;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* User Cards */
+.user-card {
+  background: #f8f9fa;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s;
+}
+
+.user-card:hover {
+  transform: translateX(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.user-card h3 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.user-card p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}

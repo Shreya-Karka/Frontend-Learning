@@ -1,0 +1,81 @@
+/* Clock */
+.clock {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.time {
+  font-size: 48px;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+  margin-top: 10px;
+}
+
+/* Window Size Tracker */
+.window-tracker {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.window-tracker p {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.hint {
+  color: #666;
+  font-size: 14px !important;
+  font-style: italic;
+  margin-top: 20px !important;
+}
+
+/* Auto-Save Notes */
+.auto-save-notes {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auto-save-notes textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.auto-save-notes textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.saved-indicator {
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 10px;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

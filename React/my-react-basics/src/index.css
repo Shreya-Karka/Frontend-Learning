@@ -1,0 +1,6 @@
+.container {
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
